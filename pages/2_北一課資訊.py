@@ -30,6 +30,11 @@ with tab1:
             st.dataframe(df, use_container_width=True)
         else: st.error("讀取失敗，請檢查 CSV 網址")
     else: st.info("請在 Secrets 設定 staff_list_url")
+        
+# 在人員名單分頁中加入這個
+col1, col2 = st.columns(2)
+col1.metric(label="北一課總人數", value="45 人", delta="▲ 2")
+col2.metric(label="澎湖駐點人數", value="3 人", delta="持平")
 
 with tab2:
     st.subheader("近期會議記錄")
