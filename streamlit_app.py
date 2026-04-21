@@ -1,64 +1,100 @@
 import streamlit as st
 
+# 設定網頁標籤與佈局
 st.set_page_config(page_title="RIYI N1 Hub", page_icon="🏢", layout="wide")
 
-# --- 華麗 CSS 樣式注入 ---
+# --- 日翊企業風格 CSS 注入 ---
 st.markdown("""
     <style>
-    /* 整體背景漸層 */
+    /* 1. 全局背景：淺灰色調與頂部藍色裝飾 */
     .main {
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        background-color: #f8f9fa;
+        background-image: linear-gradient(180deg, #e9ecef 0%, #f8f9fa 100%);
     }
-    
-    /* 標題美化 */
-    .main-title {
-        font-size: 3rem;
-        font-weight: 800;
-        color: #1E3A8A;
-        text-align: center;
-        margin-bottom: 0.5rem;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    /* 卡片設計 */
-    .feature-card {
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(10px);
+
+    /* 2. 標題區：使用日翊藍 (#1a73e8 類似色) */
+    .header-container {
+        background: white;
         padding: 2rem;
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        border-radius: 15px;
+        border-bottom: 5px solid #0056b3; /* 底部藍色粗線 */
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         text-align: center;
-        transition: transform 0.3s ease;
+        margin-bottom: 2rem;
     }
     
+    .main-title {
+        font-size: 2.8rem;
+        font-weight: 800;
+        color: #0056b3; /* 企業藍 */
+        margin: 0;
+    }
+
+    /* 3. 卡片設計：玻璃擬態與企業風格 */
+    .stMarkdown div[data-testid="stVerticalBlock"] > div:has(div.feature-card) {
+        gap: 0rem;
+    }
+
+    .feature-card {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        border: 1px solid #dee2e6;
+        text-align: center;
+        transition: all 0.3s ease;
+        min-height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+
     .feature-card:hover {
         transform: translateY(-10px);
-        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        border-color: #0056b3;
     }
-    
+
     .icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
+        font-size: 4rem;
+        margin-bottom: 15px;
+    }
+
+    .card-title {
+        color: #333;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        color: #666;
+        line-height: 1.6;
     }
     </style>
     """, unsafe_allow_html=True)
 
-# --- 頁面內容 ---
-st.markdown('<p class="main-title">🏢 RIYI N1 HUB</p>', unsafe_allow_html=True)
-st.markdown('<p style="text-align:center; color:#666;">日翊北一課 · 數位行政管理系統</p>', unsafe_allow_html=True)
+# --- 頁面內容顯示 ---
 
-st.write("---")
+# 頂部標題區
+st.markdown("""
+    <div class="header-container">
+        <p class="main-title">🏢 RIYI N1 HUB</p>
+        <p style="color:#555; font-size:1.1rem; margin-top:10px;">
+            日翊文化行銷 · 北一課數位資訊入口網
+        </p>
+    </div>
+""", unsafe_allow_html=True)
 
-# 建立三欄式華麗卡片
+# 功能卡片區 - 三欄式佈局
 col1, col2, col3 = st.columns(3)
 
 with col1:
     st.markdown("""
         <div class="feature-card">
             <div class="icon">📦</div>
-            <h3>條碼冊 APP</h3>
-            <p>即時查詢、更新商品條碼資訊，支援手機掃描模式。</p>
+            <div class="card-title">條碼冊 APP</div>
+            <p class="card-text">即時查詢、更新商品條碼資訊<br>支援手機掃描與快速輸入</p>
         </div>
     """, unsafe_allow_html=True)
 
@@ -66,8 +102,8 @@ with col2:
     st.markdown("""
         <div class="feature-card">
             <div class="icon">📊</div>
-            <h3>北一課資訊</h3>
-            <p>人員名單、會議記錄與澎湖駐點即時資訊看板。</p>
+            <div class="card-title">北一課資訊</div>
+            <p class="card-text">人員名單、會議記錄<br>與澎湖駐點人員看板</p>
         </div>
     """, unsafe_allow_html=True)
 
@@ -75,10 +111,19 @@ with col3:
     st.markdown("""
         <div class="feature-card">
             <div class="icon">📅</div>
-            <h3>特休 APP</h3>
-            <p>個人特休餘額查詢與請假進度追蹤系統。</p>
+            <div class="card-title">特休 APP</div>
+            <p class="card-text">個人特休餘額查詢<br>與請假申請進度追蹤</p>
         </div>
     """, unsafe_allow_html=True)
 
-st.write("---")
-st.info("💡 提示：請使用左側導覽列進入各項功能。")
+# 底部導覽提示
+st.markdown("<br>", unsafe_allow_html=True)
+st.info("💡 **使用指南**：請點擊左側選單的 ◀ 按鈕展開選單，選擇您要進入的系統。")
+
+# 頁尾
+st.markdown("""
+    <hr style="border:0.5px solid #ddd">
+    <p style="text-align:center; color:#999; font-size:0.8rem;">
+        © 2026 Re-Yi Distribution Service Co., Ltd. All Rights Reserved
+    </p>
+""", unsafe_allow_html=True)
