@@ -1,1 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>REYI-N1 數位中心</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: radial-gradient(circle at top left, #1e293b 0%, #0f172a 100%);
+            min-height: 100vh;
+            font-family: 'Noto Sans TC', sans-serif;
+            color: white;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 28px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:active {
+            transform: scale(0.96);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .icon-box {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        /* 裝飾用的背景光暈 */
+        .glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: #3b82f6;
+            filter: blur(120px);
+            opacity: 0.15;
+            z-index: -1;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center p-6">
+    <div class="glow" style="top: -100px; right: -100px;"></div>
+    <div class="glow" style="bottom: -100px; left: -100px; background: #8b5cf6;"></div>
 
+    <header class="mt-16 mb-12 text-center">
+        <div class="inline-block p-1 mb-4 rounded-3xl bg-gradient-to-tr from-blue-500 to-purple-500">
+            <div class="bg-[#0f172a] rounded-[22px] px-6 py-2">
+                <span class="text-sm font-bold tracking-widest text-blue-400">REYI-N1 HUB</span>
+            </div>
+        </div>
+        <h1 class="text-4xl font-black mb-2 bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-400">
+            數位行政入口
+        </h1>
+        <p class="text-slate-500 text-sm tracking-widest uppercase">Select a tool to begin</p>
+    </header>
+
+    <div class="w-full max-w-sm space-y-6">
+        
+        <div class="glass-card p-5 flex items-center cursor-pointer" 
+             onclick="location.href='https://share.streamlit.io/您的帳號/專案名稱/main/0_🏠_首頁.py'">
+            <div class="icon-box w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center text-3xl mr-5">
+                📦
+            </div>
+            <div class="flex-1">
+                <h2 class="text-xl font-bold text-slate-100">商品資料快查</h2>
+                <p class="text-xs text-slate-400 mt-1">即時同步庫存與商品代碼</p>
+            </div>
+            <div class="text-slate-600 font-light text-2xl pr-2">›</div>
+        </div>
+
+        <div class="glass-card p-5 flex items-center cursor-pointer opacity-70" 
+             onclick="alert('系統開發中，敬請期待！')">
+            <div class="icon-box w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl flex items-center justify-center text-3xl mr-5">
+                📝
+            </div>
+            <div class="flex-1">
+                <h2 class="text-xl font-bold text-slate-100">日常行政回報</h2>
+                <p class="text-xs text-slate-400 mt-1">盤點紀錄與異常回報</p>
+            </div>
+            <div class="text-slate-600 font-light text-2xl pr-2">›</div>
+        </div>
+
+    </div>
+
+    <footer class="mt-auto py-10">
+        <p class="text-slate-600 text-[10px] tracking-tighter uppercase">
+            Designed by Digital Transformation Expert Group
+        </p>
+    </footer>
+</body>
+</html>
